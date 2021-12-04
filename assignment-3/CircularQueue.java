@@ -3,37 +3,27 @@ import java.util.Scanner;
 public class CircularQueue{
   public static void main(String[] args) {
     CircularQueue cq = new CircularQueue();
-    while(true){
-      int choice = getUserInput();
-      switch (choice){
-        case 1:
-          cq.enQueue(getUserInput());
+    String s = getUserInput();
+    String[] s_arr = s.split(" ");
+    int i = 0;
+    while(i < s_arr.length){
+      switch (s_arr[i]){
+        case "1":
+          i+=1;
+          cq.enQueue(Integer.parseInt(s_arr[i]));
           break;
-        case 2:
+        case "2":
           cq.deQueue();
           break;
-        case 3:
+        case "3":
           cq.display();
           break;
-        case 4:
+        case "4":
           System.exit(0);
       }
+      i+=1;
     }
   }
-
-  private void display() {
-    if(!isEmpty()){
-      for(int i = front ; i <= rear ; i++){
-        System.out.println(arr[i]);
-      }
-    }
-  }
-
-  private static int getUserInput() {
-    Scanner input = new Scanner(System.in);
-    return input.nextInt();
-  }
-
   private int arr[];
   private int rear;
   private int front;
@@ -44,9 +34,24 @@ public class CircularQueue{
     rear = -1;
     front = -1;
   }
+
+  private void display() {
+    if(!isEmpty()){
+      for(int i = front ; i <= rear ; i++){
+        System.out.println(arr[i]);
+      }
+    }
+  }
+
+  private static String getUserInput() {
+    Scanner input = new Scanner(System.in);
+    return input.nextLine();
+  }
+
   public boolean isEmpty(){
     return size == 0;
   }
+
   public void enQueue(int data){
     if(size == 5){
       System.out.println("overflow");
@@ -75,7 +80,4 @@ public class CircularQueue{
       rear = -1;
     }
   }
-
-
-
 }
