@@ -23,8 +23,19 @@ public class CircularQueue{
 
   private void display() {
     if(!isEmpty()){
-      for(int i = front ; i <= rear ; i++){
-        System.out.println(arr[i]);
+      //taken from internet
+      if(front <= rear){
+        for(int i = front ; i <= rear ;i++){
+          System.out.println(arr[i]);
+        }
+      }else {
+        // print from front to end of array
+        for(int i = front ; i < arr.length ; i++){
+          System.out.println(arr[i]);
+        }
+        for(int i = 0; i <= rear ; i++){
+          System.out.println(arr[i]);
+        }
       }
     }
   }
