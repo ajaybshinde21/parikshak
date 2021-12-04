@@ -26,30 +26,6 @@ public class CircularQueue {
     }
   }
 
-  private void display() {
-    if(!isEmpty()){
-      //taken from internet
-      if(front <= rear){
-        for(int i = front ; i <= rear ;i++){
-          System.out.println(arr[i]);
-        }
-      }else {
-        // print from front to end of array
-        for(int i = front ; i < arr.length ; i++){
-          System.out.println(arr[i]);
-        }
-        for(int i = 0; i <= rear ; i++){
-          System.out.println(arr[i]);
-        }
-      }
-    }
-  }
-
-  private static String getUserInput() {
-    Scanner input = new Scanner(System.in);
-    return input.nextLine();
-  }
-
   private int arr[];
   private int rear;
   private int front;
@@ -61,7 +37,29 @@ public class CircularQueue {
     front = -1;
   }
 
+  private void display() {
+    if (!isEmpty()) {
+      //taken from internet
+      if (front <= rear) {
+        for (int i = front; i <= rear; i++) {
+          System.out.println(arr[i]);
+        }
+      } else {
+        // print from front to end of array
+        for (int i = front; i < arr.length; i++) {
+          System.out.println(arr[i]);
+        }
+        for (int i = 0; i <= rear; i++) {
+          System.out.println(arr[i]);
+        }
+      }
+    }
+  }
 
+  private static String getUserInput() {
+    Scanner input = new Scanner(System.in);
+    return input.nextLine();
+  }
 
   public boolean isEmpty() {
     return size == 0;
