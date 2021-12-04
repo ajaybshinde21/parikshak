@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
 public class MeraNaamJoker {
+	static boolean isSurName = false;
   public static void main(String[] args) {
     String[] fullNameStringArray = getFullName();
     int lengthOfFullNameStringArray = fullNameStringArray.length;
     if(lengthOfFullNameStringArray == 3){
       System.out.println(fullNameStringArray[2] + " " + fullNameStringArray[0] + " " + fullNameStringArray[1]);
     }else if(lengthOfFullNameStringArray == 2){
-      char lastChar = fullNameStringArray[1].charAt(fullNameStringArray[1].length()-1);
-      String lastCharInString = lastChar+"";
-      if( lastCharInString.matches("[aeiouAEIOU]")){
+      if(isSurName){
         System.out.println(fullNameStringArray[1] +" " +fullNameStringArray[0]);
       }else{
         System.out.println(fullNameStringArray[0] + " " + fullNameStringArray[1]);
@@ -23,6 +22,7 @@ public class MeraNaamJoker {
     Scanner input = new Scanner(System.in);
     String s = input.nextLine();
     String fullName = "";
+    isSurName = checkIsSurName(s);
     final int MAXCHARCOUNT = 50;
     int charCountInString = 0;
     for(int i = 0; i < s.length() ;i++){
@@ -37,5 +37,14 @@ public class MeraNaamJoker {
       fullName+=s.charAt(i);
     }
     return fullName.split(" ");
+  }
+  private static boolean checkIsSurName(String s) {
+    String[] tmpStringArray = s.split(" ");
+    if(tmpStringArray.length == 2){
+      if(tmpStringArray[1].matches(".*[aeiouAEIOU]$")){
+        return true;
+      }
+    }
+    return false;
   }
 }
