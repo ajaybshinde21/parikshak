@@ -45,9 +45,9 @@ public class CircularQueue {
     }
   }
 
-  private static int getUserInput() {
+  private static String getUserInput() {
     Scanner input = new Scanner(System.in);
-    return input.nextInt();
+    return input.nextLine();
   }
 
   private int arr[];
